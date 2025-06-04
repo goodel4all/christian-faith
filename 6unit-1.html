@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제 6단원. 세상의 종말과 심판.</title>
+    <style>
+        :root {
+            --bg-gradient-start: #f0f8f0;
+            --bg-gradient-end: #e8f5e8;
+            --text-color: #2d5016;
+            --highlight-color: #4a7c59; /* 더 진한 초록: 소괄호 타이틀, 중요 키문장, 선택된 버튼 배경 */
+            --button-text-color: #ffffff; /* 선택된 버튼의 텍스트 색상 */
+            --button-border-color: #4a7c59;
+            --button-text-original-color: #4a7c59; /* 버튼 기본 텍스트 색상 */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-color);
+            line-height: 1.8;
+            box-sizing: border-box; /* 패딩, 보더가 너비에 포함되도록 */
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 100%; /* 모바일에서 화면 꽉 채움 */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: var(--highlight-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            word-break: keep-all; /* 단어가 잘리지 않도록 */
+        }
+
+        h2 {
+            color: var(--highlight-color);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            border-bottom: 2px solid var(--highlight-color);
+            padding-bottom: 5px;
+            word-break: keep-all;
+        }
+        
+        h3 {
+            color: var(--highlight-color); /* 소괄호 타이틀도 강조색으로 */
+            font-weight: bold; /* 소괄호 타이틀은 bold */
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            word-break: keep-all;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            word-break: keep-all; /* 단어가 잘리지 않도록 */
+        }
+
+        strong { /* 중요 키문장 스타일 */
+            color: var(--highlight-color);
+            font-weight: bold;
+        }
+
+        .bible-quote {
+            margin: 15px 0;
+            padding-left: 20px;
+            border-left: 3px solid var(--highlight-color);
+            font-style: italic;
+            background-color: rgba(74, 124, 89, 0.05); /* highlight-color의 투명한 버전 */
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: var(--text-color); /* 성경 구절 텍스트는 일반 텍스트 색상 */
+        }
+        .bible-quote p {
+            text-align: left; /* 성경 구절은 왼쪽 정렬 */
+            margin-bottom: 5px; /* 성경 구절 내 문단 간격 조절 */
+        }
+        .bible-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #d4e6d4;
+            border-radius: 8px;
+            background-color: #f8fff8;
+            word-break: keep-all;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column; /* 모바일에서 버튼 세로로 쌓이게 */
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option-button {
+            background-color: transparent;
+            color: var(--button-text-original-color);
+            border: 1px solid var(--button-border-color);
+            padding: 12px 15px;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+            word-break: keep-all;
+        }
+
+        .option-button:hover {
+            background-color: #e0f0e0;
+        }
+
+        .option-button.active {
+            background-color: var(--highlight-color);
+            color: var(--button-text-color); /* 선택된 버튼 텍스트는 흰색 */
+            border-color: var(--highlight-color);
+        }
+
+        .feedback-group {
+            margin-top: 15px;
+        }
+
+        .feedback-content {
+            display: none;
+            padding: 15px;
+            background-color: #e8f5e8; /* 옅은 초록 그라데이션 끝 색상 사용 */
+            border: 1px solid #cfe8cf;
+            border-radius: 5px;
+            animation: fadeIn 0.5s;
+            word-break: keep-all;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        ul {
+            padding-left: 20px;
+            word-break: keep-all;
+        }
+        li {
+            margin-bottom: 8px;
+            word-break: keep-all;
+        }
+
+        /* 모바일 가로 모드 (landscape) 및 작은 태블릿 최적화 */
+        @media (min-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+        }
+
+        /* 태블릿 및 데스크탑 최적화 */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 900px; /* 데스크탑에서 너무 넓어지지 않도록 조절 가능 */
+                margin: 0 auto; /* 중앙 정렬 */
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>제 6단원. 세상의 종말과 심판.</h1>
+
+        <section id="intro-ch6">
+            <h2>단원 도입부: 정해진 끝과 다가오는 심판</h2>
+            <p><strong>이 단원에서는 예수님께서 심판주로 다시 오시는 사건, 이 세상이 종말을 맞이하는 과정, 그리고 이제까지 이 세상에 살았던 모든 사람과 피조물이 예수님으로부터 '최종적인 심판'을 받아 천국과 지옥이 확정되는 일에 대해 알아보겠습니다.</strong> <strong>이 세상의 종말은 계속적으로 연기되는 것이 아닙니다.</strong> 예언하신 대로 하나님은 당신이 정하신 때가 되면 예수님을 이 세상에 다시 보내시어 이 세상을 소멸시키시게 되는데, 그때 이 세상은 종말을 맞이하게 됩니다. 예수님이 이 세상에 다시 오시는 가장 큰 이유는 예수님을 믿고 구원받아 하나님의 자녀가 된 자들을 죄악된 이 세상에서 영원히 살 천국으로 데려가시기 위함입니다. 그런데 예수님의 다시 오심에는 또 하나의 절대적으로 중요한 일이 있습니다. <strong>그것은 바로 모든 인간과 피조물에 대한 예수님의 최종적인 심판이 있다는 것입니다.</strong> 이 심판으로 인해 모든 인간과 피조물의 영원한 운명이 결정됩니다. 하나님의 구원의 초청을 받아들인 자는 영원한 천국의 삶이 있게 될 것이고, 거부한 자들은 지옥에서 영원한 형벌의 삶이 있게 될 것입니다.</p>
+            
+            <div class="question-group" id="q-intro-ch6">
+                <h3>(전반적인 질문)</h3>
+                <p>만약 우리가 살고 있는 이 세상에 '정해진 끝'이 있고, 그 끝에는 모든 존재의 '영원한 운명'을 결정할 '최종적인 심판'이 기다리고 있다면, 당신은 지금 이 순간의 삶의 방식이나 미래에 대한 계획에 어떤 근본적인 변화가 필요하다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-intro-ch6-1">삶의 우선순위와 가치관을 근본적으로 재정립해야 할 필요성을 느낍니다.</button>
+                    <button class="option-button" data-feedback-target="fb-intro-ch6-2">흥미로운 개념이지만, 나의 현재 삶이나 미래 계획에 큰 영향을 주지는 않을 것이라고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-intro-ch6-3">'종말'이나 '심판'은 비현실적이거나 믿기 어려운 이야기일 뿐이라고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-intro-ch6-1" class="feedback-content">
+                        <p>삶의 우선순위와 가치관을 근본적으로 재정립해야 할 필요성을 느끼시는군요. 이는 '최종적인 심판'이라는 개념이 당신의 삶에 실존적인 무게감을 주었다는 의미입니다. 기독교 신앙은 이 '정해진 끝'이 단순히 두려운 종말이 아니라, 모든 것이 정의롭게 마무리되고 영원한 결과로 이어지는 하나님의 공정한 과정이라고 말합니다. 이러한 이해는 당신이 유한한 시간 속에서 무엇을 가장 가치 있게 여기고, 어떻게 살아가야 할지에 대한 깊은 성찰로 이끌 수 있습니다. 당신은 지금껏 삶에서 '시간의 유한성'을 강하게 느꼈던 순간이 있습니까? 그때 어떤 생각을 하셨습니까?</p>
+                    </div>
+                    <div id="fb-intro-ch6-2" class="feedback-content">
+                        <p>흥미로운 개념이지만, 현재 삶이나 미래 계획에 큰 영향을 주지 않을 것이라고 생각하시는군요. 많은 사람들이 '종말'이나 '심판'을 나와 직접 관련 없는 먼 이야기로 여기곤 합니다. 그러나 기독교 신앙은 이 '최종적인 심판'이 모든 사람에게 예외 없이 찾아올 현실이며, 지금 우리의 모든 선택이 그 영원한 결과에 영향을 미친다고 주장합니다. 이러한 관점에서 당신의 현재 삶의 방식이 '영원한 결과'와 어떤 방식으로든 연결될 수 있다는 가능성에 대해 생각해 본 적이 있습니까?</p>
+                    </div>
+                    <div id="fb-intro-ch6-3" class="feedback-content">
+                        <p>'종말'이나 '심판'은 비현실적이거나 믿기 어려운 이야기일 뿐이라고 생각하시는군요. 이러한 회의적인 시각은 이해됩니다. 그러나 기독교는 성경의 예언, 예수님의 부활, 그리고 인간의 보편적인 '정의에 대한 갈망'이 '최종적인 심판'이 존재할 것이라는 강력한 증거라고 말합니다. 만약 이 모든 것이 사실이라면, 이를 외면하는 것은 삶의 가장 중요한 진실을 놓치는 것이 될 수 있습니다. 당신은 세상에서 '정의가 실현되지 않는' 상황을 보며 어떤 종류의 '궁극적인 정의'를 갈망한 적이 있습니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jesus-return-ch6">
+            <h2>1. 예수님이 당신의 자녀를 천국으로 데려 가시기 위해 다시 오십니다.</h2>
+            <h3>(본문)</h3>
+            <p><strong>예수님이 십자가를 지시기 직전 당신의 구원 사역을 마치신 후 하나님께로 돌아가실 것과 그리고 때가 되면 반드시 우리를 천국으로 데려 가시기 위해 다시 오실 것을 약속하셨습니다.</strong> <strong>하나님의 인간 창조의 목적은 인간을 당신과 소통할 수 있는 인격을 가진 자녀로 창조하고, 그 자녀와 영원히 함께 살면서 완전한 사랑을 나누는 것이었습니다.</strong> 이제 그 목적을 최종적으로 이루시기 위해서 하나님의 자녀들을 데리러 오시는 것입니다.</p>
+            <div class="bible-quote">
+                <p>요한복음 14장 1-3절,<br>내가 너희를 위하여 처소를 예비하러 가노니 가서 처소를 예비하면 내가 다시 와서 너희를 내게로 영접하여 나 있는 곳에 너희도 있게 하리라.</p>
+            </div>
+
+            <div class="question-group" id="q-jesus-return-ch6">
+                <h3>(질문)</h3>
+                <p>본문은 예수님이 '하나님의 자녀'들을 '영원히 함께 살 천국'으로 데려가시기 위해 다시 오신다고 말합니다. 이러한 '최종적인 재회'와 '영원한 사랑 관계의 완성'이라는 개념이, 당신이 느끼는 '외로움'이나 '관계의 단절'에 대한 궁극적인 해결책이나 '심리적 안정감'을 제공한다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-jesus-return-ch6-1">나의 존재에 대한 궁극적인 소속감과 사랑을 부여하며, 삶의 외로움과 관계의 단절에 대한 근원적인 해결책을 제시한다고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-jesus-return-ch6-2">'영원한 재회'나 '천국'이라는 개념은 비현실적이거나 종교적인 상징일 뿐, 실제적인 관계 문제에 도움이 되지 않는다고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-jesus-return-ch6-3">이러한 개념이 위안을 줄 수는 있지만, 지금의 삶에서 겪는 외로움이나 관계의 어려움을 직접 해결해 주지는 않는다고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-jesus-return-ch6-1" class="feedback-content">
+                        <p>당신의 존재에 대한 궁극적인 소속감과 사랑을 부여하며, 삶의 외로움과 관계의 단절에 대한 근원적인 해결책을 제시한다고 생각하시는군요. 이는 기독교 신앙이 주는 가장 깊은 위로이자 소망입니다. 인간은 본질적으로 관계적인 존재이기에, 하나님과의 영원한 사랑 관계 안에서 비로소 진정한 소속감과 완전한 평안을 경험할 수 있습니다. 당신은 살면서 '가장 깊은 관계의 만족'을 느꼈던 순간이 언제였습니까? 그것이 '영원하다면' 어떤 의미를 가질까요?</p>
+                    </div>
+                    <div id="fb-jesus-return-ch6-2" class="feedback-content">
+                        <p>'영원한 재회'나 '천국'이라는 개념이 비현실적이거나 종교적인 상징일 뿐, 실제적인 관계 문제에 도움이 되지 않는다고 생각하시는군요. 많은 사람들이 종교적인 개념을 추상적으로 느끼곤 합니다. 그러나 기독교는 예수님의 '다시 오심'과 '천국'이 단순한 상징이 아니라, '역사적인 실체'이며, 지금 우리의 삶에 실제적인 희망과 변화를 가져다준다고 말합니다. 이는 현재의 관계 어려움 속에서도 흔들리지 않는 '궁극적인 관계 회복'의 소망을 제공합니다. 당신은 세상에서 경험하는 '관계의 한계'나 '불완전함' 앞에서 어떤 '궁극적인 해결책'을 갈망하십니까?</p>
+                    </div>
+                    <div id="fb-jesus-return-ch6-3" class="feedback-content">
+                        <p>이러한 개념이 위안을 줄 수는 있지만, 지금의 삶에서 겪는 외로움이나 관계의 어려움을 직접 해결해 주지는 않는다고 생각하시는군요. 이러한 현실적인 질문은 중요합니다. 기독교는 예수님의 다시 오심과 천국이 단순히 미래의 위로를 넘어, 지금 하나님과의 관계를 회복하는 순간부터 우리의 삶에 '성령의 임재'를 통해 '내면의 평안', '사랑의 능력', '관계 회복의 지혜'를 주신다고 말합니다. 이는 추상적인 약속이 아니라, 당신의 삶에 실제적인 영향을 미치는 살아있는 힘입니다. 당신은 지금의 삶에서 어떤 '가장 큰 외로움'이나 '관계의 어려움'을 겪고 있으며, 그것을 해결하기 위해 어떤 노력을 하고 있습니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-judgment-ch6">
+            <h2>2. 모든 인간과 피조물이 예수님 앞에서 최종적인 심판을 받게 됩니다.</h2>
+            <h3>(본문)</h3>
+            <p><strong>다시 오신 예수님은 구원받은 당신의 자녀를 천국으로 데려 가시기전 먼저 하나님의 섭리에 따라 이 세상의 모든 인간과 피조물을 심판하십니다.</strong> <strong>이는 영원한 천국과 지옥을 결정짓는 무서운 최종적인 심판입니다.</strong></p>
+            <p><strong>1) 사탄에 대한 심판</strong><br>
+            사탄은 원래 천사장 중 하나였으나 하나님처럼 되려는 교만한 마음으로 하나님께 반역하였다가 천국에서 쫓겨나 사탄이 되었습니다. 우리가 다 알 수는 없지만 하나님은 당신의 섭리 가운데 사탄을 범죄한 즉시 죽이시지 않으시고 천국에서 내쫓으신 채 살려 두셨습니다. 이후 사탄은 에덴동산에서 최초 인간인 아담과 하와를 유혹하여 하나님을 배반케한 이래 지금까지 인간을 하나님으로부터 분리시키고 죄와 사망으로 옭아매는 일을 해 왔습니다. 이 세상의 권세 잡은 자로 거짓, 불의, 죽음, 파멸, 공포로 세상과 인간을 지배하며 하나님을 대적하며 살아왔습니다. 그러나 십자가 사건으로 예수님께 패배하고 그 권세를 빼앗긴 채로 존재하다가 드디어 세상 종말에 예수님으로부터 최종적인 심판을 받게 됩니다. <strong>끝까지 하나님을 대적했던 자기 죄로 말미암아 심판을 받고 영원한 지옥의 유황불못에 던져져 그곳에서 영원한 형벌을 받게 되는 것이 사탄의 운명입니다.</strong> 사탄을 추종했던 여러 귀신들과 거짓 선지자도 동일한 심판을 받게 됩니다.</p>
+            <div class="bible-quote">
+                <p>요한일서 3 장 8 절,<br>하나님의 아들이 나타나신 것은 마귀의 일을 멸하려 하심이니라.</p>
+                <p>요한계시록 20장 1~3절,<br>또 내가 보매 천사가 무저갱 열쇠와 큰 쇠사슬을 가지고 하늘로서 내려와서 용을 잡으니 곧 옛 뱀이요 마귀요 사탄이라.</p>
+                <p>요한계시록 20장 9절에서 10절,<br>하늘에서 불이 내려와 저희를 소멸하고 또 저희를 미혹하는 마귀가 불과 유황못에 던지우니, 거기는 그 짐승과 거짓 선지자도 있어 세세토록 밤낮 괴로움을 받으리라.</p>
+            </div>
+            <p><strong>2) 인간에 대한 심판.</strong></p>
+            <div class="bible-quote"><p>누구든지 생명책에 기록되지 못한 자는 불못에 던지우더라 (요한계시록 20장 15절).</p></div>
+            <p><strong>예수님이 다시 오시면 창조이래 이제까지 지구상에 살았던 모든 인간은 부활하여 예수님 앞에 심판을 받게 됩니다.</strong> 세상 종말에 하나님의 심판대 앞에 섰을 때 우리 각자는 각자가 가진 믿음의 진정성에 근거하여 진짜 하나님의 자녀인지 아닌지를 예수님으로부터 확정받게 됩니다. 예수님을 믿고 구원받은 사람들은 영원한 천국에서 영생의 삶으로 하나님의 구원의 초청을 끝까지 거부했던 사람들은 영원한 지옥으로 보내져 사탄과 같은 유황불못의 형벌을 받게 됩니다. 매우 두려운 일입니다. 심판 이후에는 다시금 구원의 기회가 없습니다. <strong>우리가 이 세상을 살면서 절대적으로 구원받아야 되는 이유입니다.</strong></p>
+            <div class="bible-quote">
+                <p>히브리서 9 장 27 절,<br>한번 죽는 것은 사람에게 정하신 것이요 그후에는 심판이 있으리니.</p>
+                <p>마태복음 25장 31-46절,<br>인자가 자기 영광으로 모든 천사와 함께 올 때에 자기 영광의 보좌에 앉으리니 모든 민족을 그 앞에 모으고 각각 분별하기를 목자가 양과 염소를 분별하는 것 같이 하여 양은 그 오른편에 염소는 그 왼편에 두리라. 그 때에 임금이 그 오른편에 있는 자들에게 이르시되 내 아버지께 복 받을 자들이여 나아와 창세로부터 너희를 위하여 예비된 나라를 상속하라. 또 왼편에 있는 자들에게 이르시되 저주를 받은 자들아 나를 떠나 마귀와 그 사자들을 위하여 예비된 영영한 불에 들어가라. 저희는 영벌에 의인들은 영생에 들어가리라 하시니라.</p>
+                <p>요한 계시록 20장 12-15절,<br>또 내가 보니 죽은 자들이 무론 대소하고 그 보좌 앞에 섰는데 책들이 펴 있고 또 다른 책이 펴졌으니 곧 생명책이라. 죽은 자들이 자기 행위를 따라 책들에 기록된 대로 심판을 받으니 누구든지 생명책에 기록되지 못한 자는 불못에 던지우더라.</p>
+                <p>요한계시록 21장 6-7절,<br>내가 생명수 샘물로 목마른 자에게 값없이 주리니 이기는 자는 이것들을 유업으로 얻으리라. 나는 저희 하나님이 되고 그는 내 아들이 되리라.</p>
+                <p>요한계시록 21장 8절,<br>그러나 두려워하는 자들과 믿지 아니하는 자들과 흉악한 자들과 살인자들과 행음자들과 술객들과 우상숭배자들과 모든 거짓말하는 자들은 불과 유황으로 타는 못에 참여하리니 이것이 둘째 사망이라.</p>
+            </div>
+
+            <div class="question-group" id="q-final-judgment-1-ch6">
+                <h3>(질문 1)</h3>
+                <p>'모든 인간과 피조물이 최종적인 심판을 받아 천국과 지옥으로 나뉜다'는 본문의 내용은, 당신이 생각하는 '공정함'이나 '정의'의 개념에 어떤 영향을 미치며, 지금 당신의 삶에서 '선한 행동'이나 '바른 삶'을 추구하는 동기에 어떤 변화를 줄 수 있다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-final-judgment-1-ch6-1">궁극적인 정의가 반드시 실현된다는 점에서 공정함을 느끼고, 지금의 삶에서 선한 행동을 추구할 동기를 얻습니다.</button>
+                    <button class="option-button" data-feedback-target="fb-final-judgment-1-ch6-2">심판의 기준이 명확하지 않거나, 세상의 불공정함을 설명하기에 부족하다고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-final-judgment-1-ch6-3">심판을 의식하는 것이 삶의 자유를 제한하고, 강요된 선한 행동을 하게 만든다고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-final-judgment-1-ch6-1" class="feedback-content">
+                        <p>궁극적인 정의가 반드시 실현된다는 점에서 공정함을 느끼고, 지금의 삶에서 선한 행동을 추구할 동기를 얻으시는군요. 이는 기독교 신앙이 제시하는 '최종적인 정의 실현'에 대한 중요한 통찰입니다. 세상에서 불의가 승리하는 것처럼 보일지라도, 하나님의 심판은 모든 것을 바로잡고 선과 악에 대한 공정한 결과를 가져올 것입니다. 이러한 믿음은 지금의 고통과 불공정함 속에서도 흔들리지 않는 희망을 주고, 바른 삶을 살아갈 용기를 줍니다. 당신은 살면서 '정의가 실현되지 않는' 상황 앞에서 어떤 좌절을 느껴본 적이 있습니까? 그리고 그 좌절 속에서 어떤 '궁극적인 해결책'을 갈망했습니까?</p>
+                    </div>
+                    <div id="fb-final-judgment-1-ch6-2" class="feedback-content">
+                        <p>심판의 기준이 명확하지 않거나, 세상의 불공정함을 설명하기에 부족하다고 생각하시는군요. 이러한 의문은 당연합니다. 기독교는 심판의 궁극적인 기준이 우리의 '행위'뿐만 아니라, '예수 그리스도를 믿는 믿음'이라는 점을 강조합니다. 이는 인간의 한계와 죄성을 인정하며, 스스로의 노력만으로는 완전한 의에 이를 수 없다는 고백에서 시작됩니다. 동시에, 이 심판은 단순히 '천국과 지옥으로의 분리'를 넘어, 우리의 모든 삶을 통찰하는 공정한 과정이라고 말합니다. 당신은 어떤 기준이 '궁극적인 공정함'을 판단할 수 있다고 생각하십니까?</p>
+                    </div>
+                    <div id="fb-final-judgment-1-ch6-3" class="feedback-content">
+                        <p>심판을 의식하는 것이 삶의 자유를 제한하고, 강요된 선한 행동을 하게 만든다고 생각하시는군요. 이러한 우려는 인간의 자유와 자율성을 중요하게 여기는 관점에서 자연스럽습니다. 그러나 기독교는 하나님이 우리에게 '자유의지'를 주셨기에, 선한 행동은 강요된 의무가 아니라 '하나님의 사랑에 대한 자발적인 반응'이라고 설명합니다. 심판은 자유로운 선택에 대한 '결과'이며, 이를 아는 것은 자유를 제한하는 것이 아니라, 더 지혜롭고 책임감 있는 선택을 하도록 돕는다고 말합니다. 당신은 '자유로운 선택'과 '책임' 사이에서 어떤 균형을 중요하게 생각하십니까?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-group" id="q-final-judgment-2-ch6">
+                <h3>(질문 2)</h3>
+                <p>사탄과 악한 존재들이 '영원한 지옥의 형벌'을 받게 된다는 것은, 당신이 이 세상의 '궁극적인 악'과 '불의'에 대해 품고 있던 분노나 좌절감에 어떤 '최종적인 해결책'이나 '정의 실현의 소망'을 가져다준다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-final-judgment-2-ch6-1">세상의 모든 악과 불의가 궁극적으로 심판받고 제거된다는 점에서 큰 안도감과 정의 실현의 소망을 느낍니다.</button>
+                    <button class="option-button" data-feedback-target="fb-final-judgment-2-ch6-2">사탄이나 지옥의 개념은 상징적인 것이며, 실제적인 악의 해결책이 될 수 없다고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-final-judgment-2-ch6-3">악이 심판받는다는 것은 중요하지만, '영원한 형벌'이라는 개념은 너무 잔혹하며, 이해하기 어렵습니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-final-judgment-2-ch6-1" class="feedback-content">
+                        <p>세상의 모든 악과 불의가 궁극적으로 심판받고 제거된다는 점에서 큰 안도감과 정의 실현의 소망을 느끼시는군요. 이는 기독교 신앙이 제시하는 '최종적인 정의'의 모습입니다. 지금 세상에 만연한 불의와 고통은 우리를 좌절하게 하지만, 하나님은 모든 악을 영원히 허용하지 않으시고, 마침내 완전한 심판을 통해 악의 근원을 제거하실 것입니다. 이러한 소망은 현재의 고통 속에서도 흔들리지 않는 평안을 주고, 더 나아가 정의를 위해 살아갈 동기를 부여합니다. 당신은 살면서 '불의'를 보았을 때 어떤 감정을 느끼며, 그 불의가 '궁극적으로 해결되기를' 얼마나 갈망합니까?</p>
+                    </div>
+                    <div id="fb-final-judgment-2-ch6-2" class="feedback-content">
+                        <p>사탄이나 지옥의 개념은 상징적인 것이며, 실제적인 악의 해결책이 될 수 없다고 생각하시는군요. 많은 사람들이 종교적인 개념을 상징적으로 해석하곤 합니다. 그러나 기독교는 사탄이 단순히 상징이 아니라, '실제적인 악의 근원'이며, '지옥' 또한 죄에 대한 '실제적인 영원한 결과'라고 주장합니다. 이는 단순히 비유를 넘어선 궁극적인 현실이며, 악에 대한 하나님의 단호한 정의를 보여줍니다. 당신은 세상의 '악'이 단순히 '인간의 문제'에서만 비롯된 것이라고 확신하십니까?</p>
+                    </div>
+                    <div id="fb-final-judgment-2-ch6-3" class="feedback-content">
+                        <p>악이 심판받는다는 것은 중요하지만, '영원한 형벌'이라는 개념이 너무 잔혹하며 이해하기 어렵다고 생각하시는군요. 이는 인간의 자비심과 연관된 중요한 질문입니다. 기독교는 '영원한 형벌'이 하나님의 잔혹성을 의미하기보다, '하나님의 거룩하심'과 '죄의 심각성'을 드러내는 것이라고 설명합니다. 또한, 하나님은 죄인들이 영원히 고통받는 것을 기뻐하시지 않으시며, 오히려 모든 사람이 구원받기를 원하신다고 말합니다. 영원한 형벌은 하나님의 사랑을 거부하고 스스로 죄를 선택한 자들에게 주어진 '자유의지의 궁극적인 결과'이기도 합니다. 당신은 인간의 죄에 대한 '궁극적인 정의'가 어떤 모습이어야 한다고 생각하십니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="world-end-ch6">
+            <h2>3. 이 세상은 불로 타 소멸되고 종말을 맞이함.</h2>
+            <h3>(본문)</h3>
+            <p><strong>최초 인간인 아담과 하와가 에덴동산에서 쫓겨난 이후 인간의 삶의 무대였던 그러나 죄악의 죽음의 땅이었던 이 세상과 이 세상에 있던 모든 것은 다 심판을 받아 불로 녹아져 영원히 없어지고 이 세상은 종말을 맞이하게 됩니다.</strong></p>
+            <div class="bible-quote">
+                <p>요한계시록 21 장 1 절,<br>처음 하늘과 처음 땅이 없어졌고 바다도 다시 있지 않더라. 처음 것들이 다 지나갔음이러라.</p>
+            </div>
+
+            <div class="question-group" id="q-world-end-ch6">
+                <h3>(질문)</h3>
+                <p>이 세상과 그 안에 있는 모든 것이 '불로 타 소멸되고 영원히 없어질 것'이라는 종말론적 개념은, 당신이 현재 삶에서 추구하는 '물질적인 성공'이나 '세상적인 가치'에 대해 어떤 '근본적인 무상감'이나 '새로운 우선순위'를 제시한다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-world-end-ch6-1">이 세상의 종말이 사실이라면, 물질적 성공이나 세상적인 가치보다 영원하고 본질적인 가치를 추구하는 것이 중요하다고 깨닫게 됩니다.</button>
+                    <button class="option-button" data-feedback-target="fb-world-end-ch6-2">세상이 종말한다는 개념 자체가 비현실적이거나, 지금의 삶과는 동떨어진 종교적 이야기라고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-world-end-ch6-3">세상이 언젠가 끝난다 해도, 지금의 삶에서 내가 원하는 것을 최대한 누리는 것이 가장 중요하다고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-world-end-ch6-1" class="feedback-content">
+                        <p>이 세상의 종말이 사실이라면, 물질적 성공이나 세상적인 가치보다 영원하고 본질적인 가치를 추구하는 것이 중요하다고 깨닫게 된다니 매우 중요합니다. 기독교 신앙은 이 세상의 종말이 단순한 파괴가 아니라, 죄로 오염된 모든 것을 정화하고 새로운 영원한 세상을 준비하는 과정이라고 말합니다. 이러한 관점은 유한한 세상적인 가치에 얽매이지 않고, 영원하고 변치 않는 하나님의 나라에 소망을 두도록 이끌어줍니다. 당신은 삶에서 '일시적인 만족'과 '영원한 가치' 사이에서 어떤 것을 더 중요하게 여기며 살아왔습니까?</p>
+                    </div>
+                    <div id="fb-world-end-ch6-2" class="feedback-content">
+                        <p>세상이 종말한다는 개념 자체가 비현실적이거나, 지금의 삶과는 동떨어진 종교적 이야기라고 생각하시는군요. 현대인들은 종말론적 사고를 비과학적이거나 불안을 조장하는 것으로 여기는 경향이 있습니다. 그러나 기독교는 역사가 시작이 있듯 끝이 있으며, 이 끝이 곧 하나님의 계획의 완성이라고 주장합니다. 이 종말론적 관점은 우리의 삶을 비현실적으로 만드는 것이 아니라, 오히려 지금 우리의 삶의 선택이 영원한 의미를 가진다는 '실존적인 무게감'을 부여합니다. 당신은 세상의 모든 것이 영원할 것이라고 확신하십니까? 아니라면, 그 끝은 어떤 모습일 것이라고 예상하십니까?</p>
+                    </div>
+                    <div id="fb-world-end-ch6-3" class="feedback-content">
+                        <p>세상이 언젠가 끝난다 해도, 지금의 삶에서 원하는 것을 최대한 누리는 것이 가장 중요하다고 생각하시는군요. 이러한 쾌락주의적 혹은 현실주의적 태도는 '한 번뿐인 삶'을 최대한 즐기려는 인간의 욕구를 반영합니다. 그러나 기독교는 이처럼 유한한 삶 속에서만 행복을 추구하는 것이 궁극적으로 '더 큰 공허함'이나 '불안감'을 가져올 수 있다고 경고합니다. 만약 세상이 끝난 후 '영원한 결과'가 있다면, 지금의 선택이 그 결과에 어떤 영향을 미칠 수 있을까요? 당신은 지금의 만족이 '궁극적인 만족'으로 이어질 것이라고 확신하십니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="conclusion-ch6">
+            <h2>마무리 멘트</h2>
+            <p>제 6 단원, '세상의 종말과 심판'에 대한 탐구를 마쳤습니다. 이 단원을 통해 우리는 예수님께서 다시 오셔서 세상을 종말 시키시고, 모든 인간과 피조물에게 공정한 심판을 행하시며, 영원한 천국과 지옥을 결정하실 것이라는 사실을 깊이 알아보았습니다. 이 무거운 주제는 우리가 지금 이 순간의 삶을 어떻게 살아야 할지에 대한 심오한 질문을 던집니다. 다음 제 7 단원에서는 하나님의 천지창조와 인간 창조 목적이 궁극적으로 완성되는 '천국에서의 영원한 삶'에 대해 자세히 탐구할 것입니다.</p>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const questionGroups = document.querySelectorAll('.question-group');
+
+            questionGroups.forEach(group => {
+                const optionButtons = group.querySelectorAll('.option-button');
+                const feedbackContents = group.querySelectorAll('.feedback-content');
+
+                optionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Reset all buttons and feedback in this group
+                        optionButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        feedbackContents.forEach(content => {
+                            content.style.display = 'none';
+                        });
+
+                        // Activate clicked button and show corresponding feedback
+                        button.classList.add('active');
+                        
+                        const feedbackTargetId = button.dataset.feedbackTarget;
+                        const targetFeedback = group.querySelector('#' + feedbackTargetId);
+                        if (targetFeedback) {
+                            targetFeedback.style.display = 'block';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
