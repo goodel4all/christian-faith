@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기독교 신앙의 소개 (Introduction of Christian Faith)</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>기독교 신앙의 소개</title>
+    <link rel="stylesheet" href="unit-style.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #343a40; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .main-container { width: 90%; max-width: 900px; margin: 20px auto; padding: 25px; background-color: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-radius: 10px; }
+        header h1 { color: #0056b3; text-align: center; margin-bottom: 30px; font-size: 2.2em; font-weight: 600; }
+        .unit-selection { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .unit-button { background-color: #007bff; color: white; padding: 18px 20px; text-align: center; border-radius: 8px; text-decoration: none; font-size: 1.15em; font-weight: 500; transition: background-color 0.2s ease-in-out, transform 0.2s ease; display: block; }
+        .unit-button:hover { background-color: #0056b3; transform: translateY(-2px); }
+        .unit-button .unit-number { display: block; font-size: 0.85em; margin-bottom: 5px; opacity: 0.85; color: #e9ecef;}
+        .unit-button .unit-title { font-weight: bold;}
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8em; }
+            .unit-button { font-size: 1em; padding: 15px;}
+            .unit-selection { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="main-container">
         <header>
             <h1>기독교 신앙의 소개</h1>
-            <h2>Introduction of Christian Faith</h2>
-            <div class="tree-illustration">
-                <img src="faith_tree.png" alt="믿음나무 일러스트">
-            </div>
         </header>
-        
-        <main>
-            <div class="button-container">
-                <a href="9units/0unit.html" class="unit-btn">들어가는 말: 나는 누구인가?</a>
-                <a href="9units/1unit.html.html" class="unit-btn">제1단원: 이 세상과 인간을 창조한 창조주 하나님이 계시다</a>
-                <a href="9units/2unit.html.html" class="unit-btn">제2단원: 천지창조와 세상의 시작</a>
-                <a href="9units/3unit.html.html" class="unit-btn">제3단원: 인간의 하나님 배반</a>
-                <a href="9units/4unit.html.html" class="unit-btn">제4단원: 예수 그리스도의 구원 사역</a>
-                <a href="9units/5unit.html.html" class="unit-btn">제5단원: 구원의 시대를 주심</a>
-                <a href="9units/6unit.html.html" class="unit-btn">제6단원: 세상의 종말과 심판</a>
-                <a href="9units/7unit.html.html" class="unit-btn">제7단원: 천국에서의 영원한 삶</a>
-                <a href="9units/8unit.html.html" class="unit-btn">맺음말: 신앙에의 권유 - 진실에 근거한 삶</a>
-            </div>
-        </main>
-        
-        <footer>
-            <p>© 2025 기독교 신앙의 소개. All rights reserved.</p>
-        </footer>
+        <div class="unit-selection">
+            <a href="들어가는말unit.html" class="unit-button"><span class="unit-number">제0단원</span><span class="unit-title">들어가는 말</span></a>
+            <a href="1unit.html" class="unit-button"><span class="unit-number">제1단원</span><span class="unit-title">창조주 하나님</span></a>
+            <a href="2unit.html" class="unit-button"><span class="unit-number">제2단원</span><span class="unit-title">하나님의 형상, 인간</span></a>
+            <a href="3unit.html" class="unit-button"><span class="unit-number">제3단원</span><span class="unit-title">죄의 시작과 그 결과</span></a>
+            <a href="4unit.html" class="unit-button"><span class="unit-number">제4단원</span><span class="unit-title">구원의 약속과 예수 그리스도</span></a>
+            <a href="5unit.html" class="unit-button"><span class="unit-number">제5단원</span><span class="unit-title">예수 그리스도의 삶과 사역</span></a>
+            <a href="6unit.html" class="unit-button"><span class="unit-number">제6단원</span><span class="unit-title">성령 하나님과 교회</span></a>
+            <a href="7unit.html" class="unit-button"><span class="unit-number">제7단원</span><span class="unit-title">천국에서의 영원한 삶</span></a>
+            <a href="8unit.html" class="unit-button"><span class="unit-number">제8단원</span><span class="unit-title">맺음말: 신앙에의 권유 - 진실에 근거한 삶</span></a>
+        </div>
     </div>
 </body>
 </html>
