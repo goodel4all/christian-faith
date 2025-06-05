@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제 4단원. 예수 그리스도의 구원 사역</title>
+    <style>
+        :root {
+            --bg-gradient-start: #f0f8f0;
+            --bg-gradient-end: #e8f5e8;
+            --text-color: #2d5016;
+            --highlight-color: #4a7c59; /* 더 진한 초록: 소괄호 타이틀, 중요 키문장, 선택된 버튼 배경 */
+            --button-text-color: #ffffff; /* 선택된 버튼의 텍스트 색상 */
+            --button-border-color: #4a7c59;
+            --button-text-original-color: #4a7c59; /* 버튼 기본 텍스트 색상 */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-color);
+            line-height: 1.8;
+            box-sizing: border-box; /* 패딩, 보더가 너비에 포함되도록 */
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 100%; /* 모바일에서 화면 꽉 채움 */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: var(--highlight-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            word-break: keep-all; /* 단어가 잘리지 않도록 */
+        }
+
+        h2 {
+            color: var(--highlight-color);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            border-bottom: 2px solid var(--highlight-color);
+            padding-bottom: 5px;
+            word-break: keep-all;
+        }
+        
+        h3 {
+            color: var(--highlight-color); /* 소괄호 타이틀도 강조색으로 */
+            font-weight: bold; /* 소괄호 타이틀은 bold */
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            word-break: keep-all;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            word-break: keep-all; /* 단어가 잘리지 않도록 */
+        }
+
+        strong { /* 중요 키문장 스타일 */
+            color: var(--highlight-color);
+            font-weight: bold;
+        }
+
+        .bible-quote {
+            margin: 15px 0;
+            padding-left: 20px;
+            border-left: 3px solid var(--highlight-color);
+            font-style: italic;
+            background-color: rgba(74, 124, 89, 0.05); /* highlight-color의 투명한 버전 */
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: var(--text-color); /* 성경 구절 텍스트는 일반 텍스트 색상 */
+        }
+        .bible-quote p {
+            text-align: left; /* 성경 구절은 왼쪽 정렬 */
+            margin-bottom: 5px; /* 성경 구절 내 문단 간격 조절 */
+        }
+        .bible-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #d4e6d4;
+            border-radius: 8px;
+            background-color: #f8fff8;
+            word-break: keep-all;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column; /* 모바일에서 버튼 세로로 쌓이게 */
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .option-button {
+            background-color: transparent;
+            color: var(--button-text-original-color);
+            border: 1px solid var(--button-border-color);
+            padding: 12px 15px;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+            word-break: keep-all;
+        }
+
+        .option-button:hover {
+            background-color: #e0f0e0;
+        }
+
+        .option-button.active {
+            background-color: var(--highlight-color);
+            color: var(--button-text-color); /* 선택된 버튼 텍스트는 흰색 */
+            border-color: var(--highlight-color);
+        }
+
+        .feedback-group {
+            margin-top: 15px;
+        }
+
+        .feedback-content {
+            display: none;
+            padding: 15px;
+            background-color: #e8f5e8; /* 옅은 초록 그라데이션 끝 색상 사용 */
+            border: 1px solid #cfe8cf;
+            border-radius: 5px;
+            animation: fadeIn 0.5s;
+            word-break: keep-all;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        ul {
+            padding-left: 20px;
+            word-break: keep-all;
+        }
+        li {
+            margin-bottom: 8px;
+            word-break: keep-all;
+        }
+
+        /* Style for the "Back to Main" button */
+        .back-to-main-button {
+            display: block;
+            width: fit-content; /* Adjusts width to content */
+            margin: 40px auto 20px auto; /* Margin top, auto for left/right (centers), margin bottom */
+            background-color: var(--highlight-color); /* Highlight color */
+            color: #ffffff; /* White text */
+            border: 1px solid var(--highlight-color); /* Highlight color border */
+            padding: 15px 30px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-decoration: none; /* Remove underline for links */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            word-break: keep-all;
+            box-sizing: border-box; /* Ensure padding/border are included in width */
+        }
+
+        .back-to-main-button:hover {
+            background-color: #2d5016; /* Dark green on hover */
+            border-color: #4a7c59; /* Maintain highlight border */
+            color: #ffffff; /* Keep text white */
+        }
+
+        /* Mobile 가로 모드 (landscape) 및 작은 태블릿 최적화 */
+        @media (min-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+        }
+
+        /* 태블릿 및 데스크탑 최적화 */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 900px; /* 데스크탑에서 너무 넓어지지 않도록 조절 가능 */
+                margin: 0 auto; /* 중앙 정렬 */
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>제 4단원. 예수 그리스도의 구원 사역.</h1>
+
+        <section id="intro-ch4">
+            <h2>단원 도입부: 절망 속 희망, 구원의 길</h2>
+            <p><strong>이 단원에서는 죽음에 빠진 인간을 구원하시기 위해 하나님이 마련하신 인류 구원의 계획, 예수 그리스도의 인간으로 오심과 자신의 생명의 희생으로 구원의 길을 열어주심, 인간은 어떻게 구원 받을 수 있는가?, 구원의 요건인 믿는다는 것은 무엇을 말하는가?, 모든 사람을 구원으로 초청하심 등에 대해 알아보겠습니다.</strong></p>
+            
+            <div class="question-group" id="q-intro-ch4">
+                <h3>(전반적인 질문)</h3>
+                <p>만약 인간이 스스로 해결할 수 없는 '죽음'이라는 문제에 직면해 있다면, 이 문제를 해결하기 위해 '창조주'가 직접 나선다는 개념은 당신에게 어떤 '궁극적인 희망'이나 '사고의 전환'을 가져다줄 수 있다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-intro-ch4-1">스스로 해결할 수 없는 문제를 초월적 존재가 해결해 준다는 점에서 큰 희망과 안도감을 느낍니다.</button>
+                    <button class="option-button" data-feedback-target="fb-intro-ch4-2">인간의 문제는 인간 스스로 해결해야 하며, 외부의 구원자에 의존하는 것은 무책임하다고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-intro-ch4-3">흥미로운 개념이지만, 현실적인 삶의 문제와는 동떨어진 이상적인 이야기일 뿐이라고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-intro-ch4-1" class="feedback-content">
+                        <p>스스로 해결할 수 없는 죽음의 문제를 초월적 존재가 해결해 준다는 점에서 큰 희망과 안도감을 느끼시는군요. 기독교 신앙은 인류가 '죄와 죽음'이라는 근원적인 문제에 직면했을 때, 인간의 노력으로는 도저히 해결할 수 없음을 인정합니다. 이때, 우리를 창조하신 하나님께서 직접 개입하시어 해결책을 마련해주셨다는 것은 절망 속에서 가장 큰 희망이 됩니다. 당신은 살면서 스스로 해결할 수 없었던 문제 앞에서 '외부의 도움'을 간절히 바란 적이 있습니까?</p>
+                    </div>
+                    <div id="fb-intro-ch4-2" class="feedback-content">
+                        <p>인간의 문제는 인간 스스로 해결해야 하며, 외부의 구원자에 의존하는 것은 무책임하다고 생각합니다. 이러한 관점은 인간의 주체적인 노력과 능력을 강조합니다. 물론 인간은 스스로 많은 문제를 해결하고 발전해왔습니다. 그러나 기독교는 '죽음'과 '죄'라는 근원적인 문제는 인간의 능력 범위를 넘어선다고 말합니다. 마치 자신이 만든 장난감을 고치기 위해 장난감이 아무리 애써도 한계가 있듯이, 창조주가 해결해야 할 문제가 있다는 것입니다. 당신은 인간의 노력으로도 결코 넘을 수 없는 '궁극적인 한계'가 존재한다고 생각하십니까?</p>
+                    </div>
+                    <div id="fb-intro-ch4-3" class="feedback-content">
+                        <p>흥미로운 개념이지만 현실적인 삶의 문제와는 동떨어진 이상적인 이야기일 뿐이라고 생각합니다. 많은 사람들이 구원의 개념을 추상적으로 느끼곤 합니다. 그러나 기독교는 '죽음'이 모든 인간에게 피할 수 없는 현실이며, 이 '죽음의 문제'를 해결하는 것이야말로 가장 현실적이고 절실한 문제라고 말합니다. 예수 그리스도의 구원 사역은 단순히 죽음 이후의 문제를 넘어, 지금 당신의 삶에서 죄의 속박과 두려움으로부터 자유와 평안을 누리게 하는 실제적인 변화를 가져온다고 주장합니다. 당신의 삶에서 '가장 현실적인 문제'는 무엇이며, 그 문제에 대한 '궁극적인 해결책'을 찾으려 해 본 적이 있습니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="salvation-plan-ch4">
+            <h2>1. 하나님이 마련하신 놀라운 구원의 길 / 예수님이 인간으로 오셔서 자신의 생명의 희생으로 인간의 죄값을 대신 치뤄주시고 인간에게 구원의 길을 열어 주심.</h2>
+            <h3>(본문)</h3>
+            <p><strong>인간이 하나님께 범죄한 후 죄인이 된 인간은 본질적으로 의이신(죄가 없으신) 하나님과 함께 할 수 없게 됩니다.</strong> 하나님과 분리된 인간은 생명이신 하나님과의 관계가 끊어지게 되어 생명을 잃게 되고, 죄와 죽음 속에서 도저히 헤어날 길이 없는 상황에 처하게 되었습니다. 인간은 하나님을 배반하고 사탄에게 복종한 결과 사탄의 종이 되고 맙니다. <strong>더욱 절망적인 것은 인간 스스로는 이 죽음에서 구원할 방법이 없다는 것입니다.</strong> 인간이 어떻게 죄와 죽음의 문제를 해결하고 하나님과의 관계를 회복할 수 있을까요? <strong>인간으로서는 불가능한 그 일을 삼위 하나님께서 놀라운 방법으로 길을 마련하십니다.</strong> 삼위 하나님이 인간을 구원하시려 마련하신 방법은 죄가 없으신 하나님의 아들 예수님이 인간의 육체를 입고 이 세상에 오셔서 당신의 생명을 내어주심므로 인간의 죄값을 대속해 주는 것이었습니다. 바로 이분이 이 세상을 창조하신 삼위일체 하나님 중에 한 분이시고 하나님의 아들 신이시지만 인간을 구원하시기 위해 예언대로 인간의 몸을 입고 2000년 전 이 세상에 오신 역사적 실존 인물 예수님이십니다. <strong>창조주 신이 자신이 만든 피조물 인간을 위해 대신 죽어주는 있을 수 없는 일이 발생한 것입니다.</strong> 죄로 인해 하나님을 만날 수 없었던 인간이 이 일로 인해 죄를 대속 받게 되고 다시 하나님께로 돌아갈 수 있는 길이 열리게 된 것입니다. 이제는 그 어느 누구도 사탄 조차도 인간을 죄로 참소할 수 없게 된 것입니다. 하나님께서는 그 예수님을 창조주의 주권으로 죽음에서 부활시키시어, 예수 그리스도의 죽으심과 대속을 통하여 인간을 구원하시려는 이 일이 삼위 하나님이 마련하신 것임을 확증해 주셨습니다. 또한 우리는 인간의 몸을 입고 오신 삼위 하나님 중의 한 분이시며 하나님의 아들이신 예수님을 직접 눈으로 대면케 됨으로써 하나님의 존재와 하나님에 대해 확실히 알게 되었습니다. 예수님은 전생애를 통해 이 모든 일을 이루시고 증거하신 후 모든 인류에게 깨닫고 창조된 대로 하나님의 자녀의 자리로 돌아올 것을 절대적으로 권유하셨습니다. 그리고 예수님은 하나님의 정한 시기가 되면 믿고 자녀 된 자들을 천국으로 데리고 가시기 위해 다시 오실 것을 약속하시고 하나님께로 돌아가셨습니다.</p>
+            <div class="bible-quote">
+                <p>요한복음 3장 16-17절,<br>하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니 이는 그를 믿는 자마다 멸망하지 않고 영생을 얻게 하려 하심이라. 하나님이 그 아들을 세상에 보내신 것은 세상을 심판하려 하심이 아니요 그로 말미암아 세상이 구원을 받게 하려 하심이라.</p>
+                <p>요한복음 10장 10절,<br>내가 온 것은 양으로 생명을 얻게 하고 더 풍성히 얻게 하려는 것이라。</p>
+                <p>이사야 53장 5절,<br>그가 찔림은 우리의 허물을 인함이요 그가 상함은 우리의 죄악을 인함이라. 그가 징계를 받으므로 우리가 평화를 누리고 그가 채찍에 맞으므로 우리가 나음을 입었도다. 우리는 다 양 같아서 그릇 행하여 각기 제 길로 갔거늘 여호와께서는 우리 무리의 죄악을 그에게 담당 시키셨도다。</p>
+            </div>
+
+            <div class="question-group" id="q-salvation-plan-ch4">
+                <h3>(질문)</h3>
+                <p>'창조주 신이 자신이 만든 피조물 인간을 위해 대신 죽어주는 일이 발생했다'는 본문의 내용은 당신의 '죄책감'이나 '죽음에 대한 두려움'에 대해 어떤 '궁극적인 해결 가능성'을 제시하며, '절대적인 사랑'의 본질에 대한 당신의 관점을 어떻게 변화시킬 수 있다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-salvation-plan-ch4-1">죄와 죽음의 문제를 해결할 수 있는 유일한 길이며, 조건 없는 절대적인 사랑을 보여준다고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-salvation-plan-ch4-2">창조주가 피조물을 위해 죽는다는 것은 이해하기 어렵거나, 신의 권능을 약하게 만드는 신화적인 이야기라고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-salvation-plan-ch4-3">그러한 희생이 사실이라 할지라도, 나의 개인적인 죄책감이나 죽음의 두려움을 완전히 해소해 줄 수는 없다고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-salvation-plan-ch4-1" class="feedback-content">
+                        <p>죄와 죽음의 문제를 해결할 수 있는 유일한 길이며, 조건 없는 절대적인 사랑을 보여준다고 생각하시는군요. 이는 기독교 신앙의 가장 핵심적인 주장입니다. 인간 스스로는 자신의 죄를 갚을 수 없고 죽음을 피할 수 없기에, 죄 없으신 창조주가 직접 몸값을 치르시고 죽음을 이기신 것은 가장 완전하고 희생적인 사랑의 증거입니다. 이 사랑은 우리의 모든 죄책감을 씻고, 죽음의 공포로부터 진정으로 해방될 수 있는 길을 열어줍니다. 당신은 살면서 누군가에게 '조건 없는 사랑'을 받아본 적이 있습니까? 그것이 당신의 삶에 어떤 영향을 주었습니까?</p>
+                    </div>
+                    <div id="fb-salvation-plan-ch4-2" class="feedback-content">
+                        <p>창조주가 피조물을 위해 죽는다는 것이 이해하기 어렵거나, 신의 권능을 약하게 만드는 신화적인 이야기라고 생각하시는군요. 이러한 의문은 당연합니다. 그러나 기독교는 이것이 하나님의 '약함'이 아니라, 오히려 '무한한 사랑'과 '절대적인 권능'의 역설적인 표현이라고 설명합니다. 자신의 목숨을 버릴 수 있는 것은 생명의 주권자만이 가능한 일이며, 그 희생을 통해 죄와 사망의 권세를 깨뜨리는 것은 창조주만이 할 수 있는 가장 강력한 권능입니다. 당신이 생각하는 '가장 강력한 힘'은 무엇이며, 그 힘이 어떤 방식으로 '사랑'을 표현할 수 있다고 생각하십니까?</p>
+                    </div>
+                    <div id="fb-salvation-plan-ch4-3" class="feedback-content">
+                        <p>그러한 희생이 사실이라 할지라도, 나의 개인적인 죄책감이나 죽음의 두려움을 완전히 해소해 줄 수는 없다고 생각합니다. 많은 사람들이 죄책감이나 죽음의 두려움에서 벗어나기 어려워합니다. 기독교는 예수님의 희생이 단순히 역사적인 사건을 넘어, 당신이 그 예수님을 '믿고 받아들일 때' 비로소 그 효과가 당신 개인의 삶에 실제적으로 적용되어 죄책감과 죽음의 두려움으로부터 자유롭게 된다고 말합니다. 다음 섹션에서 이 '믿음'이 무엇을 의미하는지 더 자세히 알아보겠습니다. 당신은 지금까지 자신의 죄책감이나 죽음에 대한 두려움을 어떤 방식으로 해소하려 노력해왔습니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to-be-saved-ch4">
+            <h2>2. 다시 열린 구원의 길, 인간은 어떻게 구원 받을 수 있는가?</h2>
+            <h3>(본문)</h3>
+            <p>그러면 우리 인간은 어떻게 그 구원을 자신의 것으로 만들 수 있을까요? <strong>성경은 예수 그리스도를 "믿음"으로만 구원을 받을 수 있다고 명확히 알려 주고 있습니다.</strong> 예수님을 믿는다는 것이 무엇인지 그리고 구원을 얻는다는 것은 무엇인지에 대해 자세히 살펴보도록 하겠습니다.</p>
+            <p><strong>1) 구원의 진정한 의미, 죄사함을 뛰어 넘어 창조 목적으로의 초청.</strong></p>
+            <p>인간의 죄는 생명 자체이시고 생명의 공급자이신 하나님을 만날 수 없게 합니다. 따라서 죄인인 인간으로서는 영원히 죽음에 갇혀 있을 운명이며 죽음에서 건져질 방법이 전혀 없습니다. 이에서 구해주신 분이 예수님이십니다. 자신의 생명의 희생으로 인간의 죗값을 대신 치뤄주시고 다시 살 수 있게 하셨습니다. 그런 배경에서 우리가 구원을 죄사함, 죽음에서 건져짐에 국한하여 생각하기 쉽습니다 그러나 구원의 진정한 의미는 여기에 머무르는 것이 아닙니다. <strong>구원의 진정한 의미는 죄사함을 뛰어 넘어 하나님이 최초의 인간을 창조하신 창조 목적을 이룸을 최종 목적으로 하고 있습니다.</strong> 구원은 창조된 본래 모습대로 하나님과 인간이 아버지와 자녀로서의 온전한 사랑의 관계 안에 있고 인간도 하나님의 생명과 완전한 삶을 소유하고 누리라는 하나님의 인간창조 목적으로의 초청입니다.</p>
+
+            <div class="question-group" id="q-how-to-be-saved-ch4">
+                <h3>(질문)</h3>
+                <p>본문은 '구원'이 단순히 '죄 사함'이나 '죽음에서 건져지는 것'을 넘어, '하나님이 인간을 창조하신 원래 목적(아버지와 자녀의 사랑 관계 안에서 하나님의 완전한 삶을 누리는 것)으로 초대받는 것'이라고 말합니다. 이러한 '구원의 진정한 의미'가 당신의 '삶의 궁극적인 목적'이나 '행복의 정의'에 어떤 새로운 통찰이나 근본적인 변화를 가져올 수 있다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-how-to-be-saved-ch4-1">구원이 단순히 부정적인 것(죄, 죽음)으로부터의 해방이 아니라, 긍정적인 목적(사랑, 완전한 삶)을 향한 초대라는 점에서 깊이 공감합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-how-to-be-saved-ch4-2">구원의 의미가 너무나 크고 추상적이어서, 나의 현실적인 삶의 문제와는 동떨어져 느껴집니다.</button>
+                    <button class="option-button" data-feedback-target="fb-how-to-be-saved-ch4-3">나의 삶의 궁극적인 목적은 내가 스스로 정하는 것이며, 외부로부터 주어지는 구원의 목적과는 무관하다고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-how-to-be-saved-ch4-1" class="feedback-content">
+                        <p>구원이 단순히 부정적인 것(죄, 죽음)으로부터의 해방이 아니라, 긍정적인 목적(사랑, 완전한 삶)을 향한 초대라는 점에서 깊이 공감하시는군요. 이는 기독교 구원론의 핵심적인 통찰입니다. 구원은 절망적인 상황에서의 단순한 탈출이 아니라, 하나님의 완전한 사랑 안으로 들어가는 새로운 시작이며, 우리의 존재가 본래 설계된 목적대로 살아가는 것입니다. 당신은 살면서 '진정한 자유'가 단순히 제약으로부터의 해방이 아니라, 어떤 '긍정적인 목적'을 향해 나아가는 것이라고 느껴본 적이 있습니까?</p>
+                    </div>
+                    <div id="fb-how-to-be-saved-ch4-2" class="feedback-content">
+                        <p>구원의 의미가 너무나 크고 추상적이어서, 당신의 현실적인 삶의 문제와는 동떨어져 느껴지시는군요. 구원의 의미가 광대하여 처음에는 그렇게 느껴질 수 있습니다. 그러나 기독교는 이 구원이 단순히 죽음 이후의 추상적인 이야기가 아니라, 지금 당신의 삶에서 '하나님과의 관계 회복'을 통해 '내면의 평안', '진정한 사랑', '삶의 의미'를 경험하게 하는 실제적인 변화라고 말합니다. 당신의 삶에서 가장 중요하게 생각하는 '현실적인 문제'는 무엇이며, 그것을 해결하는 데 있어 '근원적인 의미'나 '궁극적인 평안'이 어떤 역할을 할 수 있다고 생각하십니까?</p>
+                    </div>
+                    <div id="fb-how-to-be-saved-ch4-3" class="feedback-content">
+                        <p>당신의 삶의 궁극적인 목적은 스스로 정하는 것이며, 외부로부터 주어지는 구원의 목적과는 무관하다고 생각하시는군요. 이러한 관점은 개인의 자율성을 존중하는 현대적 사고와 일치합니다. 그러나 기독교는 인간이 '창조된 존재'이기에, 창조주의 목적을 알 때 비로소 자신의 존재 이유와 진정한 행복을 온전히 발견할 수 있다고 말합니다. 마치 어떤 작품이 그 예술가의 의도 안에서 가장 빛나듯이 말입니다. 당신은 자신의 삶에서 스스로 정한 목적이, 혹시 예상치 못한 한계나 '근원적인 공허함'에 부딪힌 적은 없습니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faith-requirement-ch4">
+            <h2>3. 구원의 요건 - "믿음", 믿음은 어떠한 믿음을 말하는가?</h2>
+            <h3>(본문)</h3>
+            <p>예수님이 직접 말씀하신 대로 구원은 “예수님을 믿음”으로 얻을 수 있습니다(요한복음 3:16). 그럼 여기서 구원의 유일한 조건으로 제시하신 “예수님을 믿는다”는 것이 무엇을 말하는 것일까요? 구원에 이르는 믿음은 어떠한 믿음을 말하는 것일까요? 하나님은 당신의 구원을 언약의 형태로 우리에게 주셨습니다. <strong>따라서 “예수님을 믿는다”는 것은 하나님이 제시하신 구원 언약에 대해 인간이 자신의 인격과 자유의지를 가지고 받아들이는 것을 말합니다.</strong> 언약은 인격자들간의 행위입니다. 따라서 예수님을 믿겠다는 믿음은 예수님에 대한 단순한 인정이 아니라 예수님과의 온전한 인격적 만남과 인격적 관계를 맺는 것을 전제로 합니다. 구원에 관련된 믿음에 대해 성경에서 예수님이 말씀하신 것들이 있습니다. 따라서 구원에 이르는 믿음은 성경에서 예수님이 말씀하신 다음사항들을 포괄하는 믿음으로 이해할 수 있습니다.</p>
+            <p><strong>1) 예수님이 나의 유일하신 주인이시요 구원자이심을 믿는 온전한 믿음의 고백을 드림</strong></p>
+            <div class="bible-quote"><p>요한복음 3장 16절,<br>하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니 이는 저를 믿는 자마다 멸망치 않고 영생을 얻게 하려 하심이라</p></div>
+            <p>인간은 예수님께서 자신의 생명을 인간의 죄값으로 내어 주심으로 절대 죽음에서 구원받는 세상 그 무엇으로도 갚을 수 없는 절대의 은혜를 입었습니다. 따라서 예수님을 믿는다는 것은, 이 세상에 오신 이 예수님을 비록 인간의 몸을 입고 있으시지만, 예수님은 본래 이 세상을 창조하신 삼위일체 하나님 중의 한분으로 인간을 죄와 죽음에서 구원해 주시기 위하여 인간의 몸을 입고 이 세상에 오셔서 당신의 생명으로 인간의 죄값을 대신 치뤄주심으로. 인간에게 구원의 길을 열어주신 창조주 하나님의 아들이심과, 인간은 이 예수님을 믿음으로만이 구원을 받을 수 있으며 이 예수님만이 구원을 주시는 유일하신 구원자이신 것을 믿는 것입니다. <strong>나의 전 인격으로 이 예수님을 나의 유일하신 주인이요 구원자로 믿는 이 믿음의 고백을 드리는 것이 무엇보다도 중요하며 이는 예수님을 믿는 믿음의 핵심입니다.</strong></p>
+            <p><strong>2) 회개</strong></p>
+            <div class="bible-quote"><p>마가복음 1장 15절,<br>이르시되 때가 찾고 하나님의 나라가 가까이 왔으니 회개하고 복음을 믿으라 하시더라。</p></div>
+            <p>나는 하나님이 창조하신 피조물이고 하나님이 주인인 종임에도 불구하고, 나 자신이 스스로 주인이 되어 살았던 죄를 회개함.</p>
+            <p><strong>3) 하나님을 마음 중심에 주인으로 영접.</strong></p>
+            <div class="bible-quote"><p>요한복음 1장 12절<br>영접하는 자 곧 그 이름을 믿는 자에게는 하나님의 자녀가 되는 권세를 주셨으니…</p></div>
+            <p>창조된 본래 모습대로 하나님의 종의 자리 자녀의 자리로 다시 돌아갈 것을 결단하고, 하나님을 주인이요 아버지로 내 마음의 중심에 영접。</p>
+            <p><strong>4) 하나님 뜻대로 살 것을 결단하고 시행.</strong></p>
+            <div class="bible-quote"><p>마태복음 7장 21-23절,<br>나더러 주여 주여 하는 자마다 천국에 다 들어갈 것이 아니요, 다만 천국에 계신 내 아버지의 뜻대로 행하는 자라야 들어가리라。</p></div>
+            <p>나는 창조주 하나님께 종속된 종이기 때문에 이제부터는 주인의 말씀대로 살겠다는 복종의 결단을 하나님께 드리고 시행。</p>
+            <p><strong>5) 이를 끝까지 내 전 인격과 중심으로 지켜나간다.</strong></p>
+            <div class="bible-quote"><p>빌립보서 2장 12절<br>항상 복종하여 두렵고 떨림으로 너희 구원을 이루라。</p></div>
+            <p>또 하나 이 언약 맺음은 끝까지 가지고 가야 한다는 것입니다. 하나님은 이 언약을 버리시지 않지만, 이 언약을 인간이 자유의지로 스스로 버리면, 언약은 깨어지고 구원에서 탈락됩니다.</p>
+            <p><strong>6) 그럼에도 불구하고 나는 나의 구원을 이룰 수 없고, 최종적으로 구원을 확정해 주시는 분은 예수님이시기에, 하나님 앞에 엎드려 주의 은혜를 구함.</strong></p>
+            <p>다시 한번 예수님을 믿겠다는 믿음을 정리하면, 나의 전인격과 자유의지를 온전히 드려 예수님을 성경에 기록된 대로 나의 유일하신 창조자요 주인이요 통치자요 구원자요 심판자요 천국으로 인도하시는 분이심을 인정하고 믿되, 특히 구원과 관련하여 이 세상에 오신 예수님을 본래 이 세상을 창조하신 삼위일체 세분 하나님 중의 한분으로 인간을 죄와 죽음에서 구원해 주시기 위하여 인간의 몸을 입고 이 세상에 오셔서 당신의 생명으로 인간의 죄값을 대신 치뤄주심으로. 인간에게 구원의 길을 열어주신 창조주 하나님의 아들이심과, 이 사실을 믿는 자에게 구원을 주시는 구원자이심을 믿는 것입니다. 그리고 이와 더불어 지금까지 나 자신이 하나님으로부터 창조함을 입은 피조물 종임에도 불구하고 주인되신 하나님을 인정하지 않고 내 스스로 주인되어 살았던 것을 회개하고, 이에서 돌이켜 창조된 본래의 자리, 하나님의 자녀요 종의 자리로 돌아갈 것을 결단하고, 이를 위해 하나님을 주인으로 내 마음 중심에 모셔 드리는 영접을 함으로써, 하나님과의 관계를 회복하고 본래의 자리로 돌아가며, 이제는 하나님의 종이고 자녀이기 때문에, 내 뜻이 아닌 하나님의 뜻대로 순종하며 살 것을 결단하고, 이 모든 언약을 인생의 끝까지 붙잡고 지킬 것을 언약함과 동시에, 나는 이 어느 것도 스스로 이룰 수 없는 존재이며, 나를 최종적으로 심판하시고 구원을 확정하시는 분은 예수님이시기에, 오직 하나님께 엎드려 구원의 은혜를 베풀어 주시기를 구하는 믿음입니다. 하나님께서 이 믿음을 보인 자에 대하여, 예수 그리스도의 대신 죽으심에 근거하여 우리 인간을 죄인이 아닌 의인으로 여겨 주시며, 하나님의 자녀로 받아들여 주시고, 더불어 하나님의 자녀로 돌아온 자에게 하나님의 성령을 보내 주시어 죽었던 내 영과 연합하여 내 영을 살리시어 거듭나게 하시고, 내 안에 내주하시므로 내 삶을 인도해 가십니다.</p>
+
+            <div class="question-group" id="q-faith-requirement-ch4">
+                <h3>(질문)</h3>
+                <p>본문은 '구원'을 받기 위한 '믿음'이 단순히 예수님을 '안다'는 지적인 동의를 넘어, '예수님을 주인으로 고백하고', '죄를 회개하며', '하나님을 마음에 영접하고', '하나님 뜻대로 순종하며', '이 모든 것을 끝까지 지켜나가되, 스스로는 할 수 없음을 인정하며 하나님의 은혜를 구하는' 총체적인 삶의 변화를 포함한다고 말합니다. 이러한 '믿음'의 정의가 당신의 '인생에서 중요한 결정을 내리는 방식'이나 '삶의 변화를 이루는 과정'에 대해 어떤 새로운 통찰이나 도전을 제시한다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-faith-requirement-ch4-1">믿음이 단순히 지식이 아닌 삶의 총체적인 변화를 포함한다는 점에 공감하며, 진정한 믿음의 의미를 깨닫게 됩니다.</button>
+                    <button class="option-button" data-feedback-target="fb-faith-requirement-ch4-2">믿음의 조건이 너무 많고 복잡하게 느껴지며, 스스로는 지켜내기 어려운 부담스러운 요구라고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-faith-requirement-ch4-3">믿음은 개인적인 영역이며, 외부의 이러한 구체적인 조건이나 삶의 변화를 강요받는 것은 옳지 않다고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-faith-requirement-ch4-1" class="feedback-content">
+                        <p>믿음이 단순히 지식이 아닌 삶의 총체적인 변화를 포함한다는 점에 공감하시는군요. 이는 기독교 신앙에서 '진정한 믿음'의 핵심을 정확히 이해하신 것입니다. 성경에서 말하는 믿음은 '머리로 아는 것'을 넘어 '마음으로 받아들이고 삶으로 순종하는 것'까지를 포함합니다. 이처럼 전인격적인 믿음은 우리의 삶에 근본적인 변화를 가져오고, 하나님과의 살아있는 관계 속에서 진정한 기쁨과 평안을 누리게 합니다. 당신은 살면서 어떤 '가치'나 '신념'을 단순히 아는 것을 넘어, 실제로 삶으로 실천하면서 가장 큰 변화를 경험한 적이 있습니까?</p>
+                    </div>
+                    <div id="fb-faith-requirement-ch4-2" class="feedback-content">
+                        <p>믿음의 조건이 너무 많고 복잡하게 느껴지며, 스스로는 지켜내기 어려운 부담스러운 요구라고 생각하시는군요. 이러한 부담감은 인간으로서 당연히 느낄 수 있습니다. 그러나 기독교는 이러한 '믿음의 요건'들이 '인간의 힘으로 달성해야 하는 과제'가 아니라, '하나님과의 언약 관계'를 위한 최소한의 태도이자, '하나님께서 먼저 베푸신 은혜에 대한 자연스러운 반응'이라고 설명합니다. 또한, 이 모든 것을 스스로 이루어낼 수 없음을 인정하고 하나님의 은혜를 구하는 것이 바로 믿음의 마지막 단계이며, 성령의 도우심으로 가능하다고 말합니다. 당신은 삶에서 '완벽함'을 추구하다가 한계를 느껴본 적이 있습니까? 그때 어떤 방식으로 위로를 받거나 문제를 해결했습니까?</p>
+                    </div>
+                    <div id="fb-faith-requirement-ch4-3" class="feedback-content">
+                        <p>믿음은 개인적인 영역이며, 외부의 이러한 구체적인 조건이나 삶의 변화를 강요받는 것은 옳지 않다고 생각합니다. 현대 사회는 개인의 자유로운 선택과 자율성을 매우 중요하게 여깁니다. 그러나 기독교는 이 '믿음의 요건'들이 강요가 아니라, '파괴된 관계를 회복하고 행복한 삶으로 돌아오기 위한 자연스러운 과정'이라고 설명합니다. 마치 망가진 관계를 회복하기 위해 서로를 인정하고, 과거의 잘못을 회개하며, 새로운 방향으로 나아가기로 결단하는 것과 유사합니다. 이 '믿음의 요건'들이 당신이 추구하는 '진정한 행복'이나 '삶의 목적'과 어떤 점에서 연결될 수 있다고 생각하십니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="receiving-god-ch4">
+            <h2>4. 하나님을 내 안에 영접하는 순간 놀라운 일이 일어납니다.</h2>
+            <h3>(본문)</h3>
+            <p><strong>1) 하나님의 영이 내 안에 오셔서 죽은 내 영을 살리심, 내주하심과 인도하심.</strong></p>
+            <p>예수님은 하나님을 믿은 자들을 고아와 같이 내버려 두지 아니하시고, 하나님의 영, 성령을 보내 주시어, 우리 각자 안에 내주하시고 함께 하시겠다고 약속하셨습니다. 실제 이 일은 예수님이 승천하신 후 십일째 되는 날에, 제자들에게 하나님의 영을 보내주심으로 이루어졌고, 그 후로도 지금까지 예외 없이 하나님의 영인 성령은 모든 믿는 자에게 동일하게 임하시고 계십니다. <strong>하나님을 영접하는 순간, 하나님의 영이 우리 각자의 심령 안에 들어 오셔서, 우리의 죽은 영을 살리시고 우리와 동행 하시며 우리를 진리 가운데로 인도하십니다.</strong> 이제까지는 나의 죄로 인해서 나의 영이 죽어 있었기 때문에, 하나님을 영적으로 느낄 수도 없었고, 하나님과의 교통을 할 수도 없었으며, 하나님의 본질과 본성이 우리 안에 누려질 수도 없었습니다. 이제 그 일들이 가능해진 것입니다.</p>
+            <div class="bible-quote"><p>로마서 8장 11절<br>예수를 죽은 자 가운데서 살리신 이의 영이 너희 안에 거하시면 그리스도 예수를 죽은 자 가운데서 살리신 이가 너희 안에 거하시는 그의 영으로 말미암아 너희 죽을 몸도 살리시리라.</p></div>
+            <p><strong>2) 하나님의 자녀가 됨. 하나님의 기업을 상속함.</strong></p>
+            <p>우리는 하나님을 영접하는 순간 창조된 대로 하나님의 자녀의 자리로 돌아가게 됩니다. 하나님 아버지의 기업을 상속할 자가 됩니다. 이 세상을 다스릴 지위도 회복하게 됩니다.</p>
+            <div class="bible-quote"><p>요한복음 1장 12절,<br>영접하는 자 곧 그 이름을 믿는 자들에게는 하나님의 자녀가 되는 권세를 주셨으니。</p></div>
+            <p><strong>3) 기도 명령과 기도 응답에 대한 약속.</strong></p>
+            <p>예수님은 천국으로 돌아가시기 전, 수 없이 무엇이든 예수님의 이름으로 구하면 듣고 시행하시겠다고 약속하시고, 기도로 구할 것을 명령하셨습니다.</p>
+            <div class="bible-quote">
+                <p>요한복음 15장 7절,<br>너희가 내 안에 거하고 내 말이 너희 안에 거하면 무엇이든지 원하는 대로 구하라 그리하면 이루리라。</p>
+                <p>내 이름으로 무엇이든지 내게 구하면 내가 행하리라。</p>
+            </div>
+            <p><strong>4) 하늘의 권세와 능력을 주심.</strong></p>
+            <p>성령과 기도 응답 외에도, 창조주 하나님의 자녀인 우리에게 땅의 어떤 일도 매고 풀 하늘의 권세를 주심으로, 우리가 이 세상의 지배자인 마귀를 정복하고, 사탄에 묶여 있는 자를 구해내며, 이 땅에 하나님의 통치가 임하게 하는 사명을 수행하도록 해 주셨습니다.</p>
+            <div class="bible-quote">
+                <p>누가복음 10장 19절,<br>내가 너희에게 뱀과 전갈을 밟으며 원수의 모든 능력을 제어할 권능을 주었으니 너희를 해칠 자가 결코 없으리라。</p>
+                <p>마태복음 16장 19절,<br>내가 천국 열쇠를 네게 주리니 네가 땅에서 무엇이든지 매면 하늘에서도 매일 것이요 네가 땅에서 무엇이든지 풀면 하늘에서도 풀리리라。</p>
+            </div>
+
+            <div class="question-group" id="q-receiving-god-ch4">
+                <h3>(질문)</h3>
+                <p>하나님을 영접하는 순간 '하나님의 영이 내 안에 오셔서 죽었던 내 영을 살리고 인도하시며, 내가 하나님의 자녀가 되어 그분의 상속자가 되고, 기도 응답과 하늘의 권세까지 받게 된다'는 주장은, 당신이 '삶의 문제'를 해결하고 '자아실현'을 이루는 방식에 어떤 '극적인 변화'나 '새로운 가능성'을 제시한다고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-receiving-god-ch4-1">나의 삶에 근본적인 변화와 무한한 가능성을 가져다줄 놀라운 약속이라고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-receiving-god-ch4-2">비현실적이고 과장된 주장이며, 과학적 또는 심리적으로 설명할 수 없는 허황된 이야기라고 생각합니다.</button>
+                    <button class="option-button" data-feedback-target="fb-receiving-god-ch4-3">이러한 능력이나 지위는 매력적이지만, 그것이 나의 삶에 실제적인 영향을 미칠지 의문입니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-receiving-god-ch4-1" class="feedback-content">
+                        <p>당신의 삶에 근본적인 변화와 무한한 가능성을 가져다줄 놀라운 약속이라고 생각하시는군요. 이는 기독교 신앙이 약속하는 가장 강력한 내적, 외적 변화입니다. '죽었던 영이 살아나는 것'은 삶의 의미와 관계의 깊이를 완전히 바꿔놓고, '하나님의 자녀가 되는 것'은 흔들리지 않는 자기 가치와 무한한 유산을 얻는 것을 의미합니다. 또한 '기도 응답'과 '하늘의 권세'는 당신이 삶의 문제들을 해결하고 세상에 선한 영향력을 끼칠 수 있는 실제적인 힘을 제공합니다. 당신은 지금까지 어떤 '삶의 변화'를 간절히 원했으며, 그것이 어떤 방식으로 이루어지기를 기대했습니까?</p>
+                    </div>
+                    <div id="fb-receiving-god-ch4-2" class="feedback-content">
+                        <p>비현실적이고 과장된 주장이며, 과학적 또는 심리적으로 설명할 수 없는 허황된 이야기라고 생각하시는군요. 이러한 주장은 인간의 경험 범위를 넘어서기에 이해하기 어려울 수 있습니다. 그러나 기독교는 이러한 '놀라운 일들'이 단순히 심리적인 현상이나 환상이 아니라, 살아계신 하나님께서 지금도 믿는 자들 안에서 실제적으로 행하시는 역사라고 주장합니다. 수많은 신앙인들이 자신의 삶에서 이 변화들을 직접 경험하고 증언하고 있습니다. 당신은 과학이나 심리로 설명할 수 없는 현상이 '실제로 존재할 가능성'에 대해 어떤 태도를 취하십니까?</p>
+                    </div>
+                    <div id="fb-receiving-god-ch4-3" class="feedback-content">
+                        <p>이러한 능력이나 지위는 매력적이지만, 그것이 나의 삶에 실제적인 영향을 미칠지 의문이라고 생각하시는군요. 이런 실용적인 질문은 중요합니다. 기독교는 이러한 약속들이 단순한 명예가 아니라, 당신의 매일의 삶 속에서 '내면의 평안', '지혜로운 인도', '문제 해결의 능력', '사랑할 수 있는 힘' 등으로 나타나는 실제적인 변화라고 말합니다. 이는 추상적인 믿음이 아니라, 삶의 모든 영역에서 당신을 돕고 변화시키는 살아있는 힘입니다. 당신은 자신의 삶에서 어떤 '실제적인 변화'를 가장 간절히 원하며, 그것이 어떤 방식으로 이루어지기를 기대하십니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="invitation-to-all-ch4">
+            <h2>5. 모든 사람을 구원으로 초청하고 계심.</h2>
+            <h3>(본문)</h3>
+            <p><strong>구원에 있어서 제일 중요한 사항은, 예수님은 구원을 마련해 놓으셨을 뿐만 아니라, 그 구원을 가지시고 바로 나를 초청하고 계시다는 것입니다.</strong> 이는 예수님이 당신의 생명으로 구원의 길을 마련하신 이유가, 나와 상관없는 것이 아니라, 나를 대상으로 하고 있고 나를 구원하시기 위해서였다는 것입니다. 무엇으로도 갚을 수 없는 절대적 은혜요 감사한 일입니다. 이 하나님의 구원에의 초청은 누구든 예외 없이 모든 사람을 대상으로 합니다. 하나님은 아버지의 심정을 가지고, 간절한 마음으로 모든 사람 각자에게 찾아 가셔서, 당신의 구원으로 돌아올 것을 초청하고 계시며, 이 초청은 내가 이 세상의 생을 마감할 때까지 유효하게 계속됩니다.</p>
+            <div class="bible-quote">
+                <p>요엘 2장 32절, 로마서 10장 13절,<br>누구든지 주의 이름을 부르는 자는 구원을 받으리라.</p>
+                <p>요한계시록 3장 20절.<br>볼지어다 내가 문 밖에 서서 두드리노니, 누구든지 내 음성을 듣고 문을 열면 내가 그에게로 들어가 그로 더불어 먹고 그는 나로 더불어 먹으리라.</p>
+                <p>로마서 1장 16절.<br>이 복음은 모든 믿는 자에게 구원을 주시는 하나님의 능력이 됨이라</p>
+            </div>
+
+            <div class="question-group" id="q-invitation-to-all-ch4">
+                <h3>(질문)</h3>
+                <p>하나님께서 예수님의 희생을 통해 '모든 사람을 예외 없이 구원으로 초청'하시고, '당신이 이 세상을 마감하는 순간까지' 그 초청이 유효하다고 합니다. 만약 이 초청이 당신에게 '진실된 사랑의 제안'이라면, 당신은 이 제안에 대해 어떤 '최종적인 결정'을 내리겠습니까? 그리고 이 결정이 당신의 '남은 삶의 방향'에 어떤 근본적인 영향을 미칠 것이라고 생각하십니까?</p>
+                <div class="options-group">
+                    <button class="option-button" data-feedback-target="fb-invitation-to-all-ch4-1">이 초청을 받아들이고, 남은 삶을 구원의 의미에 따라 변화시킬 것입니다.</button>
+                    <button class="option-button" data-feedback-target="fb-invitation-to-all-ch4-2">이 초청이 매력적이지만, 아직은 나의 자유로운 선택과 삶의 방식을 유지하고 싶습니다.</button>
+                    <button class="option-button" data-feedback-target="fb-invitation-to-all-ch4-3">이 초청이 사실인지 확신할 수 없으며, 나의 삶에 큰 영향을 주지 않을 것이라고 생각합니다.</button>
+                </div>
+                <div class="feedback-group">
+                    <div id="fb-invitation-to-all-ch4-1" class="feedback-content">
+                        <p>이 초청을 받아들이고, 남은 삶을 구원의 의미에 따라 변화시킬 것이라고 결정하시는군요. 이는 당신의 삶에서 가장 중요하고 지혜로운 결정 중 하나가 될 것입니다. 하나님과의 관계 회복은 당신의 존재에 깊은 의미와 영원한 소망을 가져다주며, 당신의 삶의 모든 영역에서 진정한 평화와 기쁨을 누리게 할 것입니다. 당신의 이 결정이 앞으로의 삶에 어떤 새로운 기대와 변화를 가져올 것이라고 예상하십니까?</p>
+                    </div>
+                    <div id="fb-invitation-to-all-ch4-2" class="feedback-content">
+                        <p>이 초청이 매력적이지만, 아직은 당신의 자유로운 선택과 삶의 방식을 유지하고 싶다고 생각하시는군요. 이러한 솔직한 마음은 존중되어야 합니다. 하나님은 강요하지 않으시며, 당신의 자유의지를 존중하십니다. 그러나 이 '초청'은 당신의 유한한 삶이 끝나는 순간까지 유효하며, 그 이후에는 돌이킬 수 없는 '영원한 결과'가 기다리고 있음을 기억할 필요가 있습니다. 당신은 이 초청을 받아들이지 않는 것이 가져올 수 있는 '궁극적인 의미'나 '결과'에 대해 깊이 생각해 본 적이 있습니까?</p>
+                    </div>
+                    <div id="fb-invitation-to-all-ch4-3" class="feedback-content">
+                        <p>이 초청이 사실인지 확신할 수 없으며, 당신의 삶에 큰 영향을 주지 않을 것이라고 생각합니다. 이러한 회의적인 시각은 이해됩니다. 그러나 기독교 신앙은 이 초청이 단순히 추상적인 이야기가 아니라, '역사적인 사실'과 '개인적인 경험'을 통해 충분히 검증될 수 있다고 주장합니다. 예수님의 부활, 성경의 일관성, 그리고 수많은 사람들의 변화된 삶이 이 초청의 진실성을 뒷받침합니다. 당신은 어떤 종류의 '증거'가 있다면 이 초청의 진실성에 대해 다시 한번 깊이 생각할 의향이 있으십니까?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="conclusion-ch4">
+            <h2>마무리 멘트</h2>
+            <p>제 4 단원, '예수 그리스도의 구원 사역'에 대한 탐구를 마쳤습니다. 이 단원을 통해 우리는 죄와 죽음에 빠진 인간을 구원하시기 위한 하나님의 놀라운 계획과, 예수 그리스도의 희생과 부활을 통한 구원의 길, 그리고 그 구원을 자신의 것으로 만들 수 있는 '믿음'의 의미에 대해 자세히 알아보았습니다. 다음 제 5 단원에서는 하나님께서 모든 인류에게 구원의 기회를 주시기 위해 세상의 종말을 연기시키고 '구원의 시대'를 주신 이유와, 이 시대에 우리가 해야 할 두 가지 중요한 일에 대해 깊이 탐구할 것입니다.</p>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const questionGroups = document.querySelectorAll('.question-group');
+
+            questionGroups.forEach(group => {
+                const optionButtons = group.querySelectorAll('.option-button');
+                const feedbackContents = group.querySelectorAll('.feedback-content');
+
+                optionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Reset all buttons and feedback in this group
+                        optionButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        feedbackContents.forEach(content => {
+                            content.style.display = 'none';
+                        });
+
+                        // Activate clicked button and show corresponding feedback
+                        button.classList.add('active');
+                        
+                        const feedbackTargetId = button.dataset.feedbackTarget;
+                        const targetFeedback = group.querySelector('#' + feedbackTargetId);
+                        if (targetFeedback) {
+                            targetFeedback.style.display = 'block';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+<a href="index.html" class="back-to-main-button">메인으로 돌아가기</a>
+</body>
+</html>
