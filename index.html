@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문과 함께하는 기독교 신앙의 소개</title>
+    <style>
+        :root {
+            /* Watercolor / Natural Palette */
+            --bg-body-start: #e9f5e9; /* Very light, soft green */
+            --bg-body-end: #c4e0c4;   /* Slightly darker, muted green */
+            --text-color: #3b5a45;    /* Dark forest green */
+            --text-color-light: #6a8c70; /* Lighter green for descriptions */
+            --highlight-color: #4a7c59; /* Medium green for titles/accents */
+            --button-bg-original: rgba(255, 255, 255, 0.7); /* Slightly translucent white for buttons */
+            --button-text-original-color: var(--text-color);
+            --button-border-color: var(--highlight-color);
+            --button-text-hover: #ffffff;
+            --container-bg: rgba(255, 255, 255, 0.85); /* Slightly more opaque container */
+        }
+
+        body, html {
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            line-height: 1.8;
+            /* Watercolor-like background */
+            background: linear-gradient(to bottom right, var(--bg-body-start), var(--bg-body-end));
+            background-attachment: fixed; /* Keep background fixed on scroll */
+            color: var(--text-color);
+            padding: 0;
+            overflow-x: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            min-height: 100vh; /* Ensure body takes full height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%; /* Responsive width */
+            margin: 20px auto; /* Adjust margin for overall centering */
+            background-color: var(--container-bg);
+            border-radius: 15px; /* Slightly more rounded */
+            padding: 40px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Softer, larger shadow */
+            text-align: center; /* Center align text inside container */
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--highlight-color);
+            margin-bottom: 30px;
+            font-weight: bold;
+            word-break: keep-all;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Subtle text shadow */
+        }
+
+        h1 small {
+            display: block;
+            font-size: 0.5em; /* Smaller subtitle */
+            color: var(--text-color-light);
+            font-style: italic;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+
+        .intro-text, .outro-text {
+            font-size: 1.05em;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            text-align: justify; /* Justify text for better readability */
+            line-height: 1.7;
+            word-break: keep-all;
+            hyphens: auto; /* Enable hyphenation if available */
+        }
+        .outro-text {
+            margin-top: 30px;
+        }
+        .intro-text p, .outro-text p {
+            margin-bottom: 1em;
+            margin-top: 0;
+        }
+
+        .button-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px; /* Slightly more space between buttons */
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            display: flex; /* Use flexbox for internal alignment */
+            flex-direction: column; /* Stack title and description */
+            width: 100%;
+            padding: 18px 25px; /* More padding for larger buttons */
+            background-color: var(--button-bg-original);
+            color: var(--button-text-original-color);
+            border: 1px solid var(--button-border-color);
+            border-radius: 10px; /* More rounded corners */
+            text-align: left;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+            box-sizing: border-box;
+            word-break: keep-all;
+            align-items: flex-start; /* Align text to the left within button */
+        }
+
+        .nav-button:hover {
+            background-color: var(--highlight-color);
+            color: var(--button-text-hover);
+            border-color: var(--text-color); /* Darker border on hover */
+            transform: translateY(-3px); /* Subtle lift effect */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* More prominent shadow on hover */
+        }
+
+        .nav-button .button-main-title {
+            font-size: 1.2em; /* Larger main title */
+            font-weight: bold;
+            margin-bottom: 8px; /* Space between title and description */
+            line-height: 1.3;
+        }
+
+        .nav-button .button-description {
+            font-size: 0.9em; /* Smaller description */
+            font-weight: normal;
+            color: var(--text-color-light); /* Lighter color for description */
+            line-height: 1.5;
+        }
+
+        /* Adjust description color on hover */
+        .nav-button:hover .button-description {
+            color: rgba(255, 255, 255, 0.8); /* Lighter on hover */
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0 auto;
+                padding: 20px;
+                border-radius: 0;
+                box-shadow: none;
+                width: 100%; /* Full width on mobile */
+                box-sizing: border-box; /* Ensure padding is included in width */
+            }
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 20px;
+            }
+            h1 small {
+                font-size: 0.4em;
+            }
+            .intro-text, .outro-text {
+                font-size: 0.95em;
+                margin-bottom: 20px;
+            }
+            .nav-button {
+                font-size: 1em;
+                padding: 15px 20px;
+            }
+            .nav-button .button-main-title {
+                font-size: 1.1em;
+                margin-bottom: 5px;
+            }
+            .nav-button .button-description {
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-music" autoplay loop>
+        <source src="audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <h1>질문과 함께하는 기독교 신앙의 소개<small>(Introduction of Christian Faith with Questions)</small></h1>
+
+        <div class="intro-text">
+            <p>인류 역사를 어떻게 해석할 수 있을까요?</p>
+            <p>단지 의미 없이 흘러가는 시간의 연속적 흐름일 뿐인가요?</p>
+            <p>기독교에서는 인류 역사를 하나님이 당신의 창조 목적을 인격적으로 완전하게 이루어 가시려는 하나님의 주권적 통치의 과정으로 이해하고 있습니다.</p>
+            <p>이 책에서는 인류 역사에 대한 하나님의 통치를 다음의 일곱 부분으로 나누어서 설명드리면서 기독교 신앙을 소개하도록 하겠습니다.</p>
+        </div>
+
+        <div class="button-list">
+            <a href="0들어가는 말.html" class="nav-button">
+                <span class="button-main-title">들어가는 말: 나는 누구인가?</span>
+                <span class="button-description">나는 누구인가에 대한 해답과 진실에 근거한 삶에 대한 서론</span>
+            </a>
+            <a href="1u.html" class="nav-button">
+                <span class="button-main-title">제1단원: 이 세상과 인간을 창조한 창조주 하나님이 계시다</span>
+                <span class="button-description">기독교 신앙의 개요, 창조주 하나님을 믿는 근거, 하나님은 어떠한 분이신가에 대한 이해</span>
+            </a>
+            <a href="2u.html" class="nav-button">
+                <span class="button-main-title">제2단원: 천지 창조와 세상의 시작, 하나님의 주권적 통치</span>
+                <span class="button-description">하나님의 천지 창조(인간창조)의 목적, 인간과 피조물의 존재목적, 하나님의 주권적 통치</span>
+            </a>
+            <a href="3u.html" class="nav-button">
+                <span class="button-main-title">제3단원: 인간의 하나님 배반, 하나님과의 분리, 죽음에 빠진 인간</span>
+                <span class="button-description">인간을 유혹한 사탄, 인간이 하나님을 배반하고 떠남, 하나님과의 분리의 결과 및 죄에 대한 이해</span>
+            </a>
+            <a href="4u.html" class="nav-button">
+                <span class="button-main-title">제4단원: 예수 그리스도의 구원 사역</span>
+                <span class="button-description">죽음에 빠진 인간을 구원하시기 위한 하나님의 계획, 예수 그리스도의 희생, 구원의 요건인 믿음</span>
+            </a>
+            <a href="5u.html" class="nav-button">
+                <span class="button-main-title">제5단원: 구원의 시대를 주심</span>
+                <span class="button-description">모든 인류에게 구원의 기회를 주시기 위해 세상의 종말을 늦추심, 이 시대에 해야 할 두 가지 일</span>
+            </a>
+            <a href="6u.html" class="nav-button">
+                <span class="button-main-title">제6단원: 세상의 종말과 심판</span>
+                <span class="button-description">예수님의 다시 오심, 이 세상을 종말시키심, 모든 피조물과 인간에 대한 심판, 천국과 지옥의 확정</span>
+            </a>
+            <a href="7u.html" class="nav-button">
+                <span class="button-main-title">제7단원: 천국에서의 영원한 삶</span>
+                <span class="button-description">하나님이 당신의 자녀들을 예비하신 천국으로 데려가심, 천국의 삶과 그 의미, 최초 창조 목적의 완성</span>
+            </a>
+            <a href="8맺음말.html" class="nav-button">
+                <span class="button-main-title">맺음말: 신앙에의 권유 - 진실에 근거한 삶</span>
+                <span class="button-description">하나님의 초청, 창조주 하나님을 믿고 영원한 생명과 완전한 삶을 누리는 하나님 자녀의 자리로 돌아갈 권유</span>
+            </a>
+        </div>
+
+        <div class="outro-text">
+            <p>하나님께서는 모든 사람을 당신이 마련해 놓으신 삶과 구원으로 초청하고 계십니다.</p>
+            <p>모든 사람은 이제 자신이 존재하게 된 진짜 사실로 돌아가야 합니다.</p>
+            <p>나를 창조한 창조주 하나님을 믿고, 창조된 대로 하나님의 영원한 생명과 완전한 삶을 나의 것으로 누리는 하나님 자녀의 자리로 돌아가야 합니다.</p>
+            <p>이제 인류 역사 속으로 들어가, 각 과정 속에서 하나님이 어떻게 당신의 창조목적을 이루어 가시고, 통치하셨는지를 배워 가면서,</p>
+            <p>하나님과 인간과 이 세상에 대한 진실을 만나시고,<br>내가 누구인가에 대한 해답도 얻으시고,<br>종국적으로 하나님에 대한 인격적 믿음과 하나님이 마련해 놓으신 영원한 생명의 풍성한 삶을 소유하고 누리시길 기도합니다.</p>
+        </div>
+    </div>
+</body>
+</html>
